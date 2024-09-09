@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 1854390385
+    locked: 0
+  - name: Platform
+    uniqueID: 919292293
+    locked: 0
+  - name: Block
+    uniqueID: 1699977541
+    locked: 0
+  - name: Ball
+    uniqueID: 1450596337
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

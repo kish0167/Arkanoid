@@ -26,7 +26,6 @@ namespace Arkanoid.Game
         {
             if (_isStarted)
             {
-                Debug.Log($"Velocity Magnitude: '{_rb.velocity.magnitude}'");
                 return;
             }
 
@@ -35,6 +34,14 @@ namespace Arkanoid.Game
             if (Input.GetMouseButtonDown(0))
             {
                 StartFlying();
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "KillerBorder")
+            {
+                Destroy(gameObject);
             }
         }
 
@@ -56,7 +63,7 @@ namespace Arkanoid.Game
         #endregion
 
         #region Private methods
-        
+
         private void MoveWithPlatform()
         {
             Vector3 currentPosition = transform.position;
