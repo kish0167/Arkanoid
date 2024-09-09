@@ -9,10 +9,13 @@ namespace Arkanoid.Game
         [SerializeField] private Sprite _conditionSprite0;
         [SerializeField] private Sprite _conditionSprite1;
         [SerializeField] private Sprite _conditionSprite2;
-
+        [Header("-_-")]
         [SerializeField] private SpriteRenderer _thisBlockSpriteRenderer;
 
+        [Header("block prefs")]
         [SerializeField] private uint _startHp;
+
+        [SerializeField] private int _scoreValue;
 
         private int _hp;
 
@@ -29,6 +32,7 @@ namespace Arkanoid.Game
         {
             if (_hp <= 1)
             {
+                ScoreTracker.Score += _scoreValue;
                 Destroy(gameObject);
                 return;
             }

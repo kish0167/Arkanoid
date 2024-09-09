@@ -179,4 +179,6 @@ MonoBehaviour:
   _conditionSprite1: {fileID: 21300000, guid: c7d6f7cc5e6be44f59edde8c56aeb4f9, type: 3}
   _conditionSprite2: {fileID: 21300000, guid: 076719959e3c44498a9af36d87ce8a25, type: 3}
   _thisBlockSpriteRenderer: {fileID: 3095192071061454906}
+  _scoreTracker: {fileID: 0}
   _startHp: 6
+  _scoreValue: 256
