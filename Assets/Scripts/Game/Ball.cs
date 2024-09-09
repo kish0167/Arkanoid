@@ -7,7 +7,6 @@ namespace Arkanoid.Game
         #region Variables
 
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private Vector2 _startDirection;
         [SerializeField] private float _speed = 10;
 
         private bool _isStarted;
@@ -47,17 +46,8 @@ namespace Arkanoid.Game
 
         private void OnDrawGizmos()
         {
-            if (!_isStarted)
-            {
-                Gizmos.color = Color.green;
-                Gizmos.DrawLine(transform.position, transform.position + (Vector3)_startDirection);
-                // Debug.Log($"Magnitude: '{_startDirection.magnitude}'");
-            }
-            else
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawLine(transform.position, transform.position + (Vector3)_rb.velocity);
-            }
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, transform.position + (Vector3)_rb.velocity);
         }
 
         #endregion
@@ -74,7 +64,8 @@ namespace Arkanoid.Game
         private void StartFlying()
         {
             _isStarted = true;
-            _rb.velocity = _startDirection.normalized * _speed;
+            Vector2 randomVector2 = new(Random.Range(-1f, 1f), Random.Range(0.2f, 1f));
+            _rb.velocity = randomVector2.normalized * _speed;
         }
 
         #endregion
