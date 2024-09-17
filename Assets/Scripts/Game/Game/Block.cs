@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Arkanoid.Game
@@ -6,6 +7,7 @@ namespace Arkanoid.Game
     {
         #region Variables
 
+        [Header("Sprites")]
         [SerializeField] private Sprite _conditionSprite0;
         [SerializeField] private Sprite _conditionSprite1;
         [SerializeField] private Sprite _conditionSprite2;
@@ -17,7 +19,19 @@ namespace Arkanoid.Game
 
         [SerializeField] private int _scoreValue;
 
+        [SerializeField] private bool _undestructable;
+
+        [SerializeField] private bool _transparent;
+
         private int _hp;
+
+        private bool _isVisible;
+
+        #endregion
+
+        #region Events
+
+        public static event Action<int> OnBlockDestroyed;
 
         #endregion
 
@@ -26,14 +40,31 @@ namespace Arkanoid.Game
         private void Start()
         {
             _hp = (int)_startHp;
+
+            if (_transparent && !_isVisible)
+            {
+                _thisBlockSpriteRenderer.sprite = null;
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            if (_transparent && !_isVisible)
+            {
+                _isVisible = true;
+                UpdateSprite();
+                return;
+            }
+
+            if (_undestructable)
+            {
+                return;
+            }
+
             if (_hp <= 1)
             {
-                ScoreTracker.Score += _scoreValue;
                 Destroy(gameObject);
+                OnBlockDestroyed?.Invoke(_scoreValue);
                 return;
             }
 

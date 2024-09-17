@@ -181,3 +181,5 @@ MonoBehaviour:
   _thisBlockSpriteRenderer: {fileID: 1236350064143833085}
   _startHp: 3
   _scoreValue: 64
+  _undestructable: 0
+  _transparent: 0

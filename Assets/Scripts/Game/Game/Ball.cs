@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Arkanoid.Game
 {
@@ -14,11 +16,19 @@ namespace Arkanoid.Game
 
         #endregion
 
+        #region Events
+
+        public static event Action OnBallDied;
+
+        #endregion
+
         #region Unity lifecycle
 
         private void Start()
         {
             _platform = FindObjectOfType<Platform>();
+
+            GameService.Respawn += MoveToPlatform;
         }
 
         private void Update()
@@ -36,11 +46,16 @@ namespace Arkanoid.Game
             }
         }
 
+        private void OnDestroy()
+        {
+            GameService.Respawn -= MoveToPlatform;
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.tag == "KillerBorder")
+            if (collision.gameObject.CompareTag("KillerBorder"))
             {
-                Destroy(gameObject);
+                OnBallDied?.Invoke();
             }
         }
 
@@ -53,6 +68,13 @@ namespace Arkanoid.Game
         #endregion
 
         #region Private methods
+
+        private void MoveToPlatform()
+        {
+            gameObject.transform.position = _platform.transform.position + new Vector3(0, 1f, 0);
+            _rb.velocity = Vector2.zero;
+            _isStarted = false;
+        }
 
         private void MoveWithPlatform()
         {
