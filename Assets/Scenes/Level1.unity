@@ -3097,7 +3097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 346565799129957740, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
       propertyPath: _isAutoPlay
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7708281713051520077, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
       propertyPath: m_Name
@@ -3107,6 +3107,66 @@ PrefabInstance:
       propertyPath: _pickUpPrefab
       value: 
       objectReference: {fileID: 1530971310704301676, guid: 4e7ce1f5e012cf14c9a54ca583a4c06e, type: 3}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: a._probability
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: _commonProbability
+      value: 80.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: _pickUpsVariants.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: _pickUpsVariants.Array.data[0].Probability
+      value: 17.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: _pickUpsVariants.Array.data[1].Probability
+      value: 80.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: _pickUpsVariants.Array.data[2].Probability
+      value: 50.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: _pickUpsVariants.Array.data[3].Probability
+      value: 15.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: _pickUpsVariants.Array.data[4].Probability
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: _pickUpsVariants.Array.data[5].Probability
+      value: 20.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: _pickUpsVariants.Array.data[0].PickUpPrefab
+      value: 
+      objectReference: {fileID: 1530971310704301676, guid: 4e7ce1f5e012cf14c9a54ca583a4c06e, type: 3}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: _pickUpsVariants.Array.data[1].PickUpPrefab
+      value: 
+      objectReference: {fileID: 9118816429692142581, guid: 793b9df9334e3c341a3ed792c75211dc, type: 3}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: _pickUpsVariants.Array.data[2].PickUpPrefab
+      value: 
+      objectReference: {fileID: -4942647484793124059, guid: 09ab2c6ad01b8b3499df63acbfde99a2, type: 3}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: _pickUpsVariants.Array.data[3].PickUpPrefab
+      value: 
+      objectReference: {fileID: 3874101303715696743, guid: 4e0b9ee64b3bdf845aa27d5ef971ff93, type: 3}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: _pickUpsVariants.Array.data[4].PickUpPrefab
+      value: 
+      objectReference: {fileID: 2289931585792529487, guid: a73544b714d4042d39b05ea29804b508, type: 3}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: _pickUpsVariants.Array.data[5].PickUpPrefab
+      value: 
+      objectReference: {fileID: 9192330726188633236, guid: 93b0a644e35605d42a643b2dd4817b18, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

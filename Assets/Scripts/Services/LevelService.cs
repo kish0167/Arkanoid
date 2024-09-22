@@ -72,11 +72,11 @@ namespace Arkanoid.Services
             foreach (Ball ball in _balls)
             {
                 Vector2 velocity = ball.GetRigidBody().velocity;
-                Debug.Log("aegwrhw5rh");
+                Vector3 position = ball.transform.position;
                 for (int i = 0; i < count; i++)
                 {
-                    Ball newBall = Instantiate(ball);
-                    newBall.transform.position += ArkanoidRandom.GetRandomVector3();
+                    Ball newBall = Instantiate(ball, position += ArkanoidRandom.GetRandomVector3(),
+                        Quaternion.identity);
                     newBall.ForseStart();
                     newBall.GetRigidBody().velocity = velocity;
                 }
@@ -126,6 +126,10 @@ namespace Arkanoid.Services
             foreach (Ball ball in _balls)
             {
                 ball.ResetBall();
+                if (GameService.Instance.IsAutoPlay)
+                {
+                    ball.ForseStart();
+                }
             }
         }
 
