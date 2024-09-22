@@ -31,7 +31,7 @@ namespace Arkanoid.UI
         }
 
         #endregion
-
+  
         #region Private methods
 
         private void ContinueButtonClickedCallback()

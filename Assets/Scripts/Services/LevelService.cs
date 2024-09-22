@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Arkanoid.Game;
 using Arkanoid.Utility;
+using UnityEngine;
 
 namespace Arkanoid.Services
 {
@@ -22,6 +23,7 @@ namespace Arkanoid.Services
         #region Properties
 
         public Ball Ball { get; private set; }
+        public Platform Platform { get; private set; }
 
         #endregion
 
@@ -33,6 +35,7 @@ namespace Arkanoid.Services
 
             Block.OnCreated += BlockCreatedCallback;
             Block.OnDestroyed += BlockDestroyedCallback;
+            Platform.OnCreated += PlatformCreatedCallback;
 
             Ball.OnCreated += BallCreatedCallback;
             Ball.OnDestroyed += BallDestroyedCallback;
@@ -42,9 +45,36 @@ namespace Arkanoid.Services
         {
             Block.OnCreated -= BlockCreatedCallback;
             Block.OnDestroyed -= BlockDestroyedCallback;
+            Platform.OnCreated -= PlatformCreatedCallback;
 
             Ball.OnCreated -= BallCreatedCallback;
             Ball.OnDestroyed -= BallDestroyedCallback;
+        }
+
+        #endregion
+
+        #region Public methods
+
+        public void RescaleBall(float coef)
+        {
+            if (Ball == null)
+            {
+                return;
+            }
+
+            //Vector3 scale = Ball.transform.localScale;
+            //scale.Scale(new Vector3(coef, coef, 1));
+            Ball.transform.localScale = new Vector3(coef, coef, 1);
+        }
+
+        public void RescalePlatformWidth(float coef)
+        {
+            if (Platform == null)
+            {
+                return;
+            }
+
+            Platform.transform.localScale = new Vector3(coef, 1f, 1f);
         }
 
         #endregion
@@ -74,6 +104,18 @@ namespace Arkanoid.Services
             {
                 OnAllBlocksDestroyed?.Invoke();
             }
+        }
+
+        private void PlatformCreatedCallback(Platform obj)
+        {
+            Platform = obj;
+        }
+
+        public void AccelerateBall(float coef)
+        {
+            Vector2 velocity = Ball.GetRigidBody().velocity;
+            velocity.Scale(new Vector2(coef, coef));
+            Ball.GetRigidBody().velocity = velocity;
         }
 
         #endregion

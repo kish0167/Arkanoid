@@ -9,11 +9,13 @@ namespace Arkanoid.Game.PickUps
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag(Tag.Platform))
+            if (!other.CompareTag(Tag.Platform))
             {
-                PerformActions();
-                Destroy(gameObject);
+                return;
             }
+
+            PerformActions();
+            Destroy(gameObject);
         }
 
         #endregion

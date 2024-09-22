@@ -65,7 +65,6 @@ namespace Arkanoid.Game
             {
                 Gizmos.color = Color.green;
                 Gizmos.DrawLine(transform.position, transform.position + (Vector3)_startDirection);
-                // Debug.Log($"Magnitude: '{_startDirection.magnitude}'");
             }
             else
             {
@@ -101,6 +100,13 @@ namespace Arkanoid.Game
             _isStarted = true;
             _rb.velocity = _startDirection.normalized * _speed;
         }
+
+        public Rigidbody2D GetRigidBody()
+        {
+            return _rb;
+        }
+        
+        
 
         #endregion
     }

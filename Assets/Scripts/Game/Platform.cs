@@ -1,3 +1,4 @@
+using System;
 using Arkanoid.Services;
 using UnityEngine;
 
@@ -5,7 +6,34 @@ namespace Arkanoid.Game
 {
     public class Platform : MonoBehaviour
     {
+        #region Variables
+
+        private bool _isSticky;
+
+        #endregion
+
+        #region Events
+
+        public static event Action<Platform> OnCreated;
+
+        #endregion
+
+        #region Properties
+
+        public bool IsSticky
+        {
+            get => _isSticky;
+            set => _isSticky = value;
+        }
+
+        #endregion
+
         #region Unity lifecycle
+
+        private void Start()
+        {
+            OnCreated?.Invoke(this);
+        }
 
         private void Update()
         {
@@ -21,6 +49,15 @@ namespace Arkanoid.Game
             else
             {
                 MoveWithMouse();
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag(Tag.Platform) && IsSticky)
+            {
+                LevelService.Instance.Ball.ResetBall();
+                IsSticky = false;
             }
         }
 

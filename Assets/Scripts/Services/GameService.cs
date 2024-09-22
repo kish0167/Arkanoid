@@ -72,7 +72,7 @@ namespace Arkanoid.Services
                 return;
             }
 
-            Debug.LogError($"GAME OVER!");
+            Debug.LogError("GAME OVER!");
         }
 
         #endregion
@@ -87,8 +87,13 @@ namespace Arkanoid.Services
             }
             else
             {
-                Debug.LogError($"GAME WIN!");
+                Debug.LogError("GAME WIN!");
             }
+        }
+        
+        public void AddLife()
+        {
+            _lives++;
         }
 
         #endregion
