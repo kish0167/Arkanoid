@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - KillerBorder
+  - Ball
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -39,18 +40,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: BG
-    uniqueID: 1854390385
-    locked: 0
-  - name: Platform
-    uniqueID: 919292293
-    locked: 0
-  - name: Block
-    uniqueID: 1699977541
-    locked: 0
-  - name: Ball
-    uniqueID: 1450596337
+  - name: Background
+    uniqueID: 1426167747
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Pad
+    uniqueID: 2772822641
+    locked: 0
+  - name: Ball
+    uniqueID: 551265815
     locked: 0
