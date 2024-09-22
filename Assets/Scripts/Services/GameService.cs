@@ -68,7 +68,7 @@ namespace Arkanoid.Services
             {
                 _lives--;
 
-                LevelService.Instance.Ball.ResetBall();
+                LevelService.Instance.ResetBalls();
                 return;
             }
 

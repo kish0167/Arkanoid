@@ -29,7 +29,7 @@ namespace Arkanoid.Game
 
         private void Start()
         {
-            _platform = FindObjectOfType<Platform>();
+            _platform = LevelService.Instance.Platform;
 
             OnCreated?.Invoke(this);
 
@@ -77,6 +77,16 @@ namespace Arkanoid.Game
 
         #region Public methods
 
+        public void ForseStart()
+        {
+            _isStarted = true;
+        }
+
+        public Rigidbody2D GetRigidBody()
+        {
+            return _rb;
+        }
+
         public void ResetBall()
         {
             _isStarted = false;
@@ -100,13 +110,6 @@ namespace Arkanoid.Game
             _isStarted = true;
             _rb.velocity = _startDirection.normalized * _speed;
         }
-
-        public Rigidbody2D GetRigidBody()
-        {
-            return _rb;
-        }
-        
-        
 
         #endregion
     }

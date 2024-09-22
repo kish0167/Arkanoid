@@ -10,6 +10,8 @@ namespace Arkanoid.Services
     {
         #region Variables
 
+        private readonly List<Ball> _balls = new();
+
         private readonly List<Block> _blocks = new();
 
         #endregion
@@ -22,7 +24,7 @@ namespace Arkanoid.Services
 
         #region Properties
 
-        public Ball Ball { get; private set; }
+        //public Ball Ball { get; private set; }
         public Platform Platform { get; private set; }
 
         #endregion
@@ -55,16 +57,58 @@ namespace Arkanoid.Services
 
         #region Public methods
 
-        public void RescaleBall(float coef)
+        public void AccelerateBalls(float coef)
         {
-            if (Ball == null)
+            foreach (Ball ball in _balls)
+            {
+                Vector2 velocity = ball.GetRigidBody().velocity;
+                velocity.Scale(new Vector2(coef, coef));
+                ball.GetRigidBody().velocity = velocity;
+            }
+        }
+
+        public void DupeBalls(int count)
+        {
+            foreach (Ball ball in _balls)
+            {
+                Vector2 velocity = ball.GetRigidBody().velocity;
+                Debug.Log("aegwrhw5rh");
+                for (int i = 0; i < count; i++)
+                {
+                    Ball newBall = Instantiate(ball);
+                    newBall.transform.position += ArkanoidRandom.GetRandomVector3();
+                    newBall.ForseStart();
+                    newBall.GetRigidBody().velocity = velocity;
+                }
+            }
+        }
+
+        public Ball GetFirstBall()
+        {
+            if (_balls.Count == 0)
+            {
+                return null;
+            }
+
+            return _balls[0];
+        }
+
+        public bool IsLastBall()
+        {
+            return _balls.Count < 2;
+        }
+
+        public void RescaleBalls(float coef)
+        {
+            if (_balls.Count == 0)
             {
                 return;
             }
 
-            //Vector3 scale = Ball.transform.localScale;
-            //scale.Scale(new Vector3(coef, coef, 1));
-            Ball.transform.localScale = new Vector3(coef, coef, 1);
+            foreach (Ball ball in _balls)
+            {
+                ball.transform.localScale = new Vector3(coef, coef, 1);
+            }
         }
 
         public void RescalePlatformWidth(float coef)
@@ -77,18 +121,26 @@ namespace Arkanoid.Services
             Platform.transform.localScale = new Vector3(coef, 1f, 1f);
         }
 
+        public void ResetBalls()
+        {
+            foreach (Ball ball in _balls)
+            {
+                ball.ResetBall();
+            }
+        }
+
         #endregion
 
         #region Private methods
 
         private void BallCreatedCallback(Ball ball)
         {
-            Ball = ball;
+            _balls.Add(ball);
         }
 
         private void BallDestroyedCallback(Ball ball)
         {
-            Ball = null;
+            _balls.Remove(ball);
         }
 
         private void BlockCreatedCallback(Block block)
@@ -109,13 +161,6 @@ namespace Arkanoid.Services
         private void PlatformCreatedCallback(Platform obj)
         {
             Platform = obj;
-        }
-
-        public void AccelerateBall(float coef)
-        {
-            Vector2 velocity = Ball.GetRigidBody().velocity;
-            velocity.Scale(new Vector2(coef, coef));
-            Ball.GetRigidBody().velocity = velocity;
         }
 
         #endregion

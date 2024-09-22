@@ -11,7 +11,7 @@ namespace Arkanoid.Game.PickUps
         {
             base.PerformActions();
 
-            LevelService.Instance.AccelerateBall(_coefficient);
+            LevelService.Instance.AccelerateBalls(_coefficient);
         }
     }
 }

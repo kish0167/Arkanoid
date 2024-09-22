@@ -54,11 +54,13 @@ namespace Arkanoid.Game
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag(Tag.Platform) && IsSticky)
+            if (!other.gameObject.CompareTag(Tag.Ball) || !IsSticky)
             {
-                LevelService.Instance.Ball.ResetBall();
-                IsSticky = false;
+                return;
             }
+
+            other.gameObject.GetComponent<Ball>().ResetBall();
+            IsSticky = false;
         }
 
         #endregion
@@ -67,7 +69,7 @@ namespace Arkanoid.Game
 
         private void MoveWithBall()
         {
-            Ball ball = LevelService.Instance.Ball;
+            Ball ball = LevelService.Instance.GetFirstBall();
             if (ball == null)
             {
                 return;

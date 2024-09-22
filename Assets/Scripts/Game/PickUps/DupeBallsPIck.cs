@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Arkanoid.Game.PickUps
 {
-    public class ResizeBallPick : PickUp
+    public class DupeBallsPick : PickUp
     {
         #region Variables
 
-        [SerializeField] private float _resizeCoefficient = 1.5f;
+        [SerializeField] private int _copiesCount = 2;
 
         #endregion
 
@@ -17,7 +17,7 @@ namespace Arkanoid.Game.PickUps
         {
             base.PerformActions();
 
-            LevelService.Instance.RescaleBalls(_resizeCoefficient);
+            LevelService.Instance.DupeBalls(_copiesCount);
         }
 
         #endregion

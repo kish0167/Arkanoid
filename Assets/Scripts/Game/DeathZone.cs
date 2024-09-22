@@ -20,7 +20,7 @@ namespace Arkanoid.Game
                 return;
             }
 
-            if (other.gameObject.CompareTag(Tag.Ball))
+            if (other.gameObject.CompareTag(Tag.Ball) && LevelService.Instance.IsLastBall())
             {
                 GameService.Instance.RemoveLife();
             }

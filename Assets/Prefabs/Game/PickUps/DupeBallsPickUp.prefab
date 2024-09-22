@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6b1342409e0704de8a390f91f75f969b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5547788, g: 1, b: 0.504717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 7663654654887472704}
   - component: {fileID: 5071108864887656095}
   - component: {fileID: 240577083760303856}
-  - component: {fileID: 9192330726188633236}
+  - component: {fileID: -4942647484793124059}
   m_Layer: 0
-  m_Name: StikyPlatformPickUp1
+  m_Name: DupeBallsPickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +181,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.045290112}
   serializedVersion: 2
   m_Radius: 0.28611797
---- !u!114 &9192330726188633236
+--- !u!114 &-4942647484793124059
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,6 +190,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7187342084882342939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee4dbeab829d457693021f78a6812bc9, type: 3}
+  m_Script: {fileID: 11500000, guid: d07787337bc54e9ea4341624c2d00bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
