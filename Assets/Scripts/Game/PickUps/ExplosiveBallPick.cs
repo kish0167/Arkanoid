@@ -21,7 +21,7 @@ namespace Arkanoid
             foreach (Ball ball in LevelService.Instance.Balls)
             {
                 //StartCoroutine(ball.MakeExplosiveForSeconds(_durationSeconds, _explosionPrefab));
-                ball.MakeExplosive(_explosionPrefab);
+                ball.MakeExplosive(_explosionPrefab, _durationSeconds);
             }
         }
     }

@@ -193,4 +193,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f10060c6414e6b80e589c3ece5c631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scoreValue: 64
   _resizeCoefficient: 1.5

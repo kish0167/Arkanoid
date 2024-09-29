@@ -602,6 +602,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &570046346 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8586388284727954837, guid: e950f0d0082b7924eb25acd49021f5be, type: 3}
+  m_PrefabInstance: {fileID: 1815236417}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &680291224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -843,6 +848,7 @@ Transform:
   - {fileID: 352547709}
   - {fileID: 2121566848}
   - {fileID: 1905420837}
+  - {fileID: 570046346}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1046061637
@@ -1471,7 +1477,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 997149316}
     m_Modifications:
     - target: {fileID: 8567431174701542112, guid: e950f0d0082b7924eb25acd49021f5be, type: 3}
       propertyPath: m_Name
@@ -1495,15 +1501,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8586388284727954837, guid: e950f0d0082b7924eb25acd49021f5be, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8586388284727954837, guid: e950f0d0082b7924eb25acd49021f5be, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8586388284727954837, guid: e950f0d0082b7924eb25acd49021f5be, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8586388284727954837, guid: e950f0d0082b7924eb25acd49021f5be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2201,6 +2207,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Services
       objectReference: {fileID: 0}
+    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
+      propertyPath: _pickUpsVariants.Array.data[6].PickUpPrefab
+      value: 
+      objectReference: {fileID: 8048202914055448906, guid: 08640dfa68727cf4ea4300cb98d4521c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2483,4 +2493,3 @@ SceneRoots:
   - {fileID: 6394478273250736357}
   - {fileID: 8034379801230098971}
   - {fileID: 1837694858}
-  - {fileID: 1815236417}

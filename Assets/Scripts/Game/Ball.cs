@@ -107,14 +107,16 @@ namespace Arkanoid.Game
             return _rb;
         }
 
-        public void MakeExplosive(Explosion explosionPrefab)
+        public void MakeExplosive(Explosion explosionPrefab, float duration)
         {
             _explosionPrefab = explosionPrefab;
             IsExplosive = true;
+            StartCoroutine(MakeNonExplosive(duration));
         }
 
-        public void MakeNonExplosive()
+        private IEnumerator MakeNonExplosive(float duration)
         {
+            yield return new WaitForSeconds(duration);
             _explosionPrefab = null;
             IsExplosive = false;
         }
@@ -122,7 +124,6 @@ namespace Arkanoid.Game
         public void ResetBall()
         {
             _isStarted = false;
-            IsExplosive = false;
             _rb.velocity = Vector2.zero;
         }
 

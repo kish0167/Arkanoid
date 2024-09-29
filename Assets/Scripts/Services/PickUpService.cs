@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Arkanoid.Game.PickUps;
 using Arkanoid.Utility;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Arkanoid.Services
@@ -47,7 +48,7 @@ namespace Arkanoid.Services
 
             foreach (PickUpAndProbability p in _pickUpsVariants)
             {
-                sum += p.Probability;
+                sum += p.probability;
             }
 
             float cumulative = 0f;
@@ -55,10 +56,10 @@ namespace Arkanoid.Services
 
             foreach (PickUpAndProbability pickup in _pickUpsVariants)
             {
-                cumulative += pickup.Probability;
+                cumulative += pickup.probability;
                 if (randomValue < cumulative)
                 {
-                    return pickup.PickUpPrefab;
+                    return pickup.pickUpPrefab;
                 }
             }
 
@@ -73,10 +74,11 @@ namespace Arkanoid.Services
         {
             #region Variables
 
-            [SerializeField] public PickUp PickUpPrefab;
+            [FormerlySerializedAs("PickUpPrefab")] [SerializeField] public PickUp pickUpPrefab;
+            [FormerlySerializedAs("Probability")]
             [Header("relative probability, not actual percentage")]
             [Range(0f, 100f)]
-            [SerializeField] public float Probability;
+            [SerializeField] public float probability;
 
             #endregion
         }
