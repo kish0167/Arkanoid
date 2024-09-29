@@ -7,6 +7,7 @@ namespace Arkanoid.Game.PickUps
     {
         #region Variables
 
+        [Header("Other pickup settings")]
         [SerializeField] private int _score = 1;
 
         #endregion

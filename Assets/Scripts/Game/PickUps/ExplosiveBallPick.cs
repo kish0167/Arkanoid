@@ -9,7 +9,7 @@ namespace Arkanoid
 {
     public class ExplosiveBallPick : PickUp
     {
-        
+        [Header("Other pickup settings")]
         [SerializeField] private float _durationSeconds = 15f;
         [SerializeField] private Explosion _explosionPrefab;
 

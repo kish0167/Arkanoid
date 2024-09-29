@@ -1976,18 +1976,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 196643092149122752, guid: bf6c8d31fbfcc438ca6bcd2f550b546f, type: 3}
-      propertyPath: _startDirection.x
-      value: 4.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 196643092149122752, guid: bf6c8d31fbfcc438ca6bcd2f550b546f, type: 3}
-      propertyPath: _startDirection.y
-      value: 5.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 196643092149122752, guid: bf6c8d31fbfcc438ca6bcd2f550b546f, type: 3}
-      propertyPath: _yOffsetFromPlatform
-      value: 1.22
-      objectReference: {fileID: 0}
     - target: {fileID: 6826456325419256319, guid: bf6c8d31fbfcc438ca6bcd2f550b546f, type: 3}
       propertyPath: m_Name
       value: Ball
@@ -2207,10 +2195,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Services
       objectReference: {fileID: 0}
-    - target: {fileID: 8885515990837650372, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
-      propertyPath: _pickUpsVariants.Array.data[6].PickUpPrefab
-      value: 
-      objectReference: {fileID: 8048202914055448906, guid: 08640dfa68727cf4ea4300cb98d4521c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

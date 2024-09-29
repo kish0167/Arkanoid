@@ -14,6 +14,8 @@ namespace Arkanoid.Game
         [SerializeField] private Vector2 _startDirection;
         [SerializeField] private float _speed = 10;
         [SerializeField] private float _yOffsetFromPlatform = 1;
+        [SerializeField] private AudioClip _defaultHitSfx;
+        
         private Explosion _explosionPrefab;
 
         private bool _isStarted;
@@ -73,6 +75,7 @@ namespace Arkanoid.Game
         {
             if (!IsExplosive)
             {
+                AudioService.Instance.PlaySfx(_defaultHitSfx);
                 return;
             }
 

@@ -7,6 +7,7 @@ namespace Arkanoid.Game.PickUps
     {
         #region Variables
 
+        [Header("Other pickup settings")]
         [SerializeField] private float _resizeCoefficient = 1.5f;
 
         #endregion

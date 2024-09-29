@@ -1,7 +1,6 @@
 using System;
 using Arkanoid.Utility;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Arkanoid.Services
 {
@@ -18,6 +17,8 @@ namespace Arkanoid.Services
         [Header("Stats")]
         [SerializeField] private int _score;
         [SerializeField] private int _lives;
+
+        [SerializeField] private AudioClip _gameOverSfx;
 
         #endregion
 
@@ -71,7 +72,7 @@ namespace Arkanoid.Services
             {
                 return;
             }
-            
+
             _score += value;
             OnScoreChanged?.Invoke(_score);
         }
@@ -82,7 +83,7 @@ namespace Arkanoid.Services
             {
                 return;
             }
-            
+
             if (_lives + value < 0)
             {
                 _lives = 0;
@@ -108,7 +109,7 @@ namespace Arkanoid.Services
 
         private void AllBlocksDestroyedCallback()
         {
-            if (SceneLoaderService.Instance.HasNextLevel())     // TODO: This is not fine
+            if (SceneLoaderService.Instance.HasNextLevel()) // TODO: This is not fine
             {
                 SceneLoaderService.Instance.LoadNextLevel();
             }
@@ -126,6 +127,7 @@ namespace Arkanoid.Services
             }
 
             IsGameOver = true;
+            AudioService.Instance.PlaySfx(_gameOverSfx);
             OnGameOver?.Invoke();
         }
 

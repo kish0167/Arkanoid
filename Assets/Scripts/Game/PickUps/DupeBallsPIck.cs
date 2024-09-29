@@ -8,6 +8,7 @@ namespace Arkanoid.Game.PickUps
     {
         #region Variables
 
+        [Header("Other pickup settings")]
         [SerializeField] private int _copiesCount = 2;
 
         #endregion

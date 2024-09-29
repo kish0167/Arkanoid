@@ -132,9 +132,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 3790044035081921437}
-  _startDirection: {x: 0, y: 10}
+  _startDirection: {x: 4.04, y: 5.49}
   _speed: 10
-  _yOffsetFromPlatform: 1
+  _yOffsetFromPlatform: 1.22
+  _defaultHitSfx: {fileID: 8300000, guid: eb8b85795fa4cfd4882479bbe3adb6df, type: 3}
 --- !u!58 &8390826723768986935
 CircleCollider2D:
   m_ObjectHideFlags: 0

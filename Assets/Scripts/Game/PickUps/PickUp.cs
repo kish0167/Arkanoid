@@ -1,4 +1,5 @@
 using Arkanoid.Services;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Arkanoid.Game.PickUps
@@ -6,9 +7,14 @@ namespace Arkanoid.Game.PickUps
     [RequireComponent(typeof(Rigidbody2D))]
     public abstract class PickUp : MonoBehaviour
     {
-
-        [SerializeField] private int _scoreValue;
+        #region Variables
         
+        [Header("Default pickup settings")]
+        [SerializeField] private int _scoreValue;
+        [SerializeField] private AudioClip _audioClip;
+        [SerializeField] private GameObject _vfxPrefab;
+        #endregion
+
         #region Unity lifecycle
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -29,8 +35,12 @@ namespace Arkanoid.Game.PickUps
         protected virtual void PerformActions()
         {
             GameService.Instance.AddScore(_scoreValue);
-            // TODO: Play vfx
-            // TODO: Play sound
+            if (_vfxPrefab != null)
+            {
+                Instantiate(_vfxPrefab, transform.position, quaternion.identity);
+            }
+
+            AudioService.Instance.PlaySfx(_audioClip);
         }
 
         #endregion

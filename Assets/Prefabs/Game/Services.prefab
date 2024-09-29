@@ -89,9 +89,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isAutoPlay: 0
-  _maxLives: 1
+  _maxLives: 2
   _score: 0
   _lives: 0
+  _gameOverSfx: {fileID: 8300000, guid: d374ec2186de7234bb3fe0828ee1d823, type: 3}
 --- !u!1 &1579259348973970922
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 299397752151162333}
   - component: {fileID: 1724638514249622325}
+  - component: {fileID: 9001896664980112959}
   m_Layer: 0
   m_Name: AudioService
   m_TagString: Untagged
@@ -136,7 +138,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79deeb265c804d7eab5ef86f68b23dbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sfxAudioSource: {fileID: 0}
+  _sfxAudioSource: {fileID: 9001896664980112959}
+--- !u!82 &9001896664980112959
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579259348973970922}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2131774821161062962
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,22 +323,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f93848d9a94802b3a7336a40fbe293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _commonProbability: 100
+  _commonProbability: 30
   _pickUpsVariants:
-  - PickUpPrefab: {fileID: 1530971310704301676, guid: 4e7ce1f5e012cf14c9a54ca583a4c06e, type: 3}
-    Probability: 0
-  - PickUpPrefab: {fileID: 9118816429692142581, guid: 793b9df9334e3c341a3ed792c75211dc, type: 3}
-    Probability: 0
-  - PickUpPrefab: {fileID: -4942647484793124059, guid: 09ab2c6ad01b8b3499df63acbfde99a2, type: 3}
-    Probability: 0
-  - PickUpPrefab: {fileID: 3874101303715696743, guid: 4e0b9ee64b3bdf845aa27d5ef971ff93, type: 3}
-    Probability: 0
-  - PickUpPrefab: {fileID: 2289931585792529487, guid: a73544b714d4042d39b05ea29804b508, type: 3}
-    Probability: 0
-  - PickUpPrefab: {fileID: 9192330726188633236, guid: 93b0a644e35605d42a643b2dd4817b18, type: 3}
-    Probability: 0
-  - PickUpPrefab: {fileID: 5864331351270104506, guid: 51de78befa4edb041912d5da239b2357, type: 3}
-    Probability: 100
+  - pickUpPrefab: {fileID: 1530971310704301676, guid: 4e7ce1f5e012cf14c9a54ca583a4c06e, type: 3}
+    probability: 44.6
+  - pickUpPrefab: {fileID: 9118816429692142581, guid: 793b9df9334e3c341a3ed792c75211dc, type: 3}
+    probability: 37.2
+  - pickUpPrefab: {fileID: -4942647484793124059, guid: 09ab2c6ad01b8b3499df63acbfde99a2, type: 3}
+    probability: 37.6
+  - pickUpPrefab: {fileID: 3874101303715696743, guid: 4e0b9ee64b3bdf845aa27d5ef971ff93, type: 3}
+    probability: 40.7
+  - pickUpPrefab: {fileID: 2289931585792529487, guid: a73544b714d4042d39b05ea29804b508, type: 3}
+    probability: 39.1
+  - pickUpPrefab: {fileID: 9192330726188633236, guid: 93b0a644e35605d42a643b2dd4817b18, type: 3}
+    probability: 26.4
+  - pickUpPrefab: {fileID: 8048202914055448906, guid: 08640dfa68727cf4ea4300cb98d4521c, type: 3}
+    probability: 63.6
+  - pickUpPrefab: {fileID: 5864331351270104506, guid: 51de78befa4edb041912d5da239b2357, type: 3}
+    probability: 17.8
 --- !u!1 &7657443062064743266
 GameObject:
   m_ObjectHideFlags: 0
