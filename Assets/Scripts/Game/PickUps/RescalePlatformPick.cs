@@ -17,7 +17,12 @@ namespace Arkanoid.Game.PickUps
         {
             base.PerformActions();
 
-            LevelService.Instance.RescalePlatformWidth(_resizeCoefficient);
+            if (LevelService.Instance.Platform == null)
+            {
+                return;
+            }
+
+            LevelService.Instance.Platform.transform.localScale = new Vector3(_resizeCoefficient, 1f, 1f);
         }
 
         #endregion

@@ -1,20 +1,15 @@
 using System.Collections.Generic;
-using Arkanoid.Utility;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Arkanoid.Services
 {
-    public class HpBarService : MonoBehaviour
+    public class LivesContainer : MonoBehaviour
     {
         #region Variables
 
         [SerializeField] private Heart _heartPrefab;
-
         private readonly List<Heart> _hearts = new();
 
-
-        private HorizontalLayoutGroup _heartrsContainer;
         #endregion
 
         #region Unity lifecycle
@@ -22,12 +17,12 @@ namespace Arkanoid.Services
         private void Awake()
         {
             Heart.OnCreated += HeartCreatedCallback;
+            GameService.Instance.OnLivesChanged += LivesChangedCallback;
         }
 
         private void Start()
         {
-            GameService.Instance.OnLivesChanged += LivesChangedCallback;
-            _heartrsContainer = FindObjectOfType<HorizontalLayoutGroup>();
+            ShowNHearts(GameService.Instance.Lives);
         }
 
         private void OnDestroy()
@@ -48,16 +43,6 @@ namespace Arkanoid.Services
         #endregion
 
         #region Private methods
-
-        private Heart GetFirstHeart()
-        {
-            if (_hearts.Count == 0)
-            {
-                return null;
-            }
-
-            return _hearts[0];
-        }
 
         private void HeartCreatedCallback(Heart obj)
         {
@@ -84,7 +69,7 @@ namespace Arkanoid.Services
             }
             else
             {
-                Heart newHeart = Instantiate(_heartPrefab, _heartrsContainer.transform);
+                Heart newHeart = Instantiate(_heartPrefab, transform);
                 _hearts.Add(newHeart);
                 ShowNHearts(n);
             }

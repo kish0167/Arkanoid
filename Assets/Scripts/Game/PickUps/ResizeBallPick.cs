@@ -17,7 +17,15 @@ namespace Arkanoid.Game.PickUps
         {
             base.PerformActions();
 
-            LevelService.Instance.RescaleBalls(_resizeCoefficient);
+            if (LevelService.Instance.Balls.Count == 0)
+            {
+                return;
+            }
+
+            foreach (Ball ball in LevelService.Instance.Balls)
+            {
+                ball.transform.localScale = new Vector3(_resizeCoefficient, _resizeCoefficient, 1);
+            }
         }
 
         #endregion

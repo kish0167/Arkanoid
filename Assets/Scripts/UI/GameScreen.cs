@@ -18,6 +18,7 @@ namespace Arkanoid.UI
         {
             GameService.Instance.OnScoreChanged += ScoreChangedCallback;
             UpdateScore();
+            
         }
 
         private void OnDestroy()

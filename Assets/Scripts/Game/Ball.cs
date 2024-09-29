@@ -29,7 +29,7 @@ namespace Arkanoid.Game
 
         private void Start()
         {
-            _platform = LevelService.Instance.Platform;
+            _platform = FindObjectOfType<Platform>();
 
             OnCreated?.Invoke(this);
 
@@ -77,7 +77,7 @@ namespace Arkanoid.Game
 
         #region Public methods
 
-        public void ForseStart()
+        public void ForceStart()
         {
             _isStarted = true;
         }

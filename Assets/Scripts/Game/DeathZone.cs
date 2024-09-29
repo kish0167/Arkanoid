@@ -22,9 +22,19 @@ namespace Arkanoid.Game
 
             if (other.gameObject.CompareTag(Tag.Ball) && LevelService.Instance.IsLastBall())
             {
-                GameService.Instance.RemoveLife();
+                GameService.Instance.ChangeLife(-1);
+                
+                if (GameService.Instance.IsGameOver)
+                {
+                    Destroy(LevelService.Instance.GetFirstBall().gameObject);
+                    return;
+                }
+
+                LevelService.Instance.GetFirstBall().ResetBall();
+                return;
             }
-            else
+
+            if (other.gameObject.CompareTag(Tag.Ball))
             {
                 Destroy(other.gameObject);
             }

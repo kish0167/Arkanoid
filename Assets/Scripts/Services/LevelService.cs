@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Arkanoid.Game;
 using Arkanoid.Utility;
-using UnityEngine;
 
 namespace Arkanoid.Services
 {
@@ -24,7 +23,7 @@ namespace Arkanoid.Services
 
         #region Properties
 
-        //public Ball Ball { get; private set; }
+        public List<Ball> Balls => _balls;
         public Platform Platform { get; private set; }
 
         #endregion
@@ -38,6 +37,7 @@ namespace Arkanoid.Services
             Block.OnCreated += BlockCreatedCallback;
             Block.OnDestroyed += BlockDestroyedCallback;
             Platform.OnCreated += PlatformCreatedCallback;
+            Platform.OnDestroyed += PlatformDestroyedCallback;
 
             Ball.OnCreated += BallCreatedCallback;
             Ball.OnDestroyed += BallDestroyedCallback;
@@ -48,6 +48,7 @@ namespace Arkanoid.Services
             Block.OnCreated -= BlockCreatedCallback;
             Block.OnDestroyed -= BlockDestroyedCallback;
             Platform.OnCreated -= PlatformCreatedCallback;
+            Platform.OnDestroyed -= PlatformDestroyedCallback;
 
             Ball.OnCreated -= BallCreatedCallback;
             Ball.OnDestroyed -= BallDestroyedCallback;
@@ -56,32 +57,6 @@ namespace Arkanoid.Services
         #endregion
 
         #region Public methods
-
-        public void AccelerateBalls(float coef)
-        {
-            foreach (Ball ball in _balls)
-            {
-                Vector2 velocity = ball.GetRigidBody().velocity;
-                velocity.Scale(new Vector2(coef, coef));
-                ball.GetRigidBody().velocity = velocity;
-            }
-        }
-
-        public void DupeBalls(int count)
-        {
-            foreach (Ball ball in _balls)
-            {
-                Vector2 velocity = ball.GetRigidBody().velocity;
-                Vector3 position = ball.transform.position;
-                for (int i = 0; i < count; i++)
-                {
-                    Ball newBall = Instantiate(ball, position += ArkanoidRandom.GetRandomVector3(),
-                        Quaternion.identity);
-                    newBall.ForseStart();
-                    newBall.GetRigidBody().velocity = velocity;
-                }
-            }
-        }
 
         public Ball GetFirstBall()
         {
@@ -98,29 +73,6 @@ namespace Arkanoid.Services
             return _balls.Count < 2;
         }
 
-        public void RescaleBalls(float coef)
-        {
-            if (_balls.Count == 0)
-            {
-                return;
-            }
-
-            foreach (Ball ball in _balls)
-            {
-                ball.transform.localScale = new Vector3(coef, coef, 1);
-            }
-        }
-
-        public void RescalePlatformWidth(float coef)
-        {
-            if (Platform == null)
-            {
-                return;
-            }
-
-            Platform.transform.localScale = new Vector3(coef, 1f, 1f);
-        }
-
         public void ResetBalls()
         {
             foreach (Ball ball in _balls)
@@ -128,7 +80,7 @@ namespace Arkanoid.Services
                 ball.ResetBall();
                 if (GameService.Instance.IsAutoPlay)
                 {
-                    ball.ForseStart();
+                    ball.ForceStart();
                 }
             }
         }
@@ -165,6 +117,11 @@ namespace Arkanoid.Services
         private void PlatformCreatedCallback(Platform obj)
         {
             Platform = obj;
+        }
+
+        private void PlatformDestroyedCallback(Platform obj)
+        {
+            Platform = null;
         }
 
         #endregion

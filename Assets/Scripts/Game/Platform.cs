@@ -8,23 +8,18 @@ namespace Arkanoid.Game
     {
         #region Variables
 
-        private bool _isSticky;
-
         #endregion
 
         #region Events
 
         public static event Action<Platform> OnCreated;
+        public static event Action<Platform> OnDestroyed;
 
         #endregion
 
         #region Properties
 
-        public bool IsSticky
-        {
-            get => _isSticky;
-            set => _isSticky = value;
-        }
+        public bool IsSticky { get; set; }
 
         #endregion
 
@@ -35,9 +30,14 @@ namespace Arkanoid.Game
             OnCreated?.Invoke(this);
         }
 
+        private void OnDestroy()
+        {
+            OnDestroyed?.Invoke(this);
+        }
+
         private void Update()
         {
-            if (PauseService.Instance.IsPaused)
+            if (PauseService.Instance.IsPaused || GameService.Instance.IsGameOver)
             {
                 return;
             }

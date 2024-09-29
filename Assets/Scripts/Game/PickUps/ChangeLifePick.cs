@@ -3,15 +3,22 @@ using UnityEngine;
 
 namespace Arkanoid.Game.PickUps
 {
-    public class AddLifePick : PickUp
+    public class ChangeLifePick : PickUp
     {
+        #region Variables
 
-        [SerializeField] private int _type;
-        
+        [SerializeField] private int _changeValue;
+
+        #endregion
+
+        #region Protected methods
+
         protected override void PerformActions()
         {
             base.PerformActions();
-            GameService.Instance.ChangeLife(1);
+            GameService.Instance.ChangeLife(_changeValue);
         }
+
+        #endregion
     }
 }

@@ -22,7 +22,7 @@ namespace Arkanoid.Services
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && !GameService.Instance.IsGameOver)
             {
                 TogglePause();
             }

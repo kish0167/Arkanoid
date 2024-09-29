@@ -1,6 +1,7 @@
 using System;
 using Arkanoid.Utility;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Arkanoid.Services
 {
@@ -22,6 +23,9 @@ namespace Arkanoid.Services
 
         #region Events
 
+        public event Action OnGameOver;
+        public event Action OnLivesChanged;
+
         public event Action<int> OnScoreChanged;
 
         #endregion
@@ -29,6 +33,10 @@ namespace Arkanoid.Services
         #region Properties
 
         public bool IsAutoPlay => _isAutoPlay;
+
+        public bool IsGameOver { get; set; }
+
+        public int Lives => _lives;
         public int Score => _score;
 
         #endregion
@@ -39,7 +47,8 @@ namespace Arkanoid.Services
         {
             base.Awake();
 
-            _lives = _maxLives;
+            ResetLives();
+            IsGameOver = false;
         }
 
         private void Start()
@@ -58,21 +67,39 @@ namespace Arkanoid.Services
 
         public void AddScore(int value)
         {
+            if (IsGameOver)
+            {
+                return;
+            }
+            
             _score += value;
             OnScoreChanged?.Invoke(_score);
         }
 
-        public void RemoveLife()
+        public void ChangeLife(int value)
         {
-            if (_lives > 0)
+            if (IsGameOver)
             {
-                _lives--;
-
-                LevelService.Instance.ResetBalls();
                 return;
             }
+            
+            if (_lives + value < 0)
+            {
+                _lives = 0;
+            }
+            else
+            {
+                _lives += value;
+            }
 
-            Debug.LogError("GAME OVER!");
+            OnLivesChanged?.Invoke();
+            GameOverCheck();
+        }
+
+        public void ResetLives()
+        {
+            _lives = _maxLives;
+            OnLivesChanged?.Invoke();
         }
 
         #endregion
@@ -81,7 +108,7 @@ namespace Arkanoid.Services
 
         private void AllBlocksDestroyedCallback()
         {
-            if (SceneLoaderService.Instance.HasNextLevel())
+            if (SceneLoaderService.Instance.HasNextLevel())     // TODO: This is not fine
             {
                 SceneLoaderService.Instance.LoadNextLevel();
             }
@@ -90,10 +117,16 @@ namespace Arkanoid.Services
                 Debug.LogError("GAME WIN!");
             }
         }
-        
-        public void AddLife()
+
+        private void GameOverCheck()
         {
-            _lives++;
+            if (_lives > 0)
+            {
+                return;
+            }
+
+            IsGameOver = true;
+            OnGameOver?.Invoke();
         }
 
         #endregion
