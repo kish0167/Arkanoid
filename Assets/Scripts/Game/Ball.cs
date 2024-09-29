@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using Arkanoid.Services;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Arkanoid.Game
@@ -12,6 +14,7 @@ namespace Arkanoid.Game
         [SerializeField] private Vector2 _startDirection;
         [SerializeField] private float _speed = 10;
         [SerializeField] private float _yOffsetFromPlatform = 1;
+        private Explosion _explosionPrefab;
 
         private bool _isStarted;
         private Platform _platform;
@@ -25,11 +28,18 @@ namespace Arkanoid.Game
 
         #endregion
 
+        #region Properties
+
+        public bool IsExplosive { get; set; }
+
+        #endregion
+
         #region Unity lifecycle
 
         private void Start()
         {
             _platform = FindObjectOfType<Platform>();
+            IsExplosive = false;
 
             OnCreated?.Invoke(this);
 
@@ -57,6 +67,16 @@ namespace Arkanoid.Game
         private void OnDestroy()
         {
             OnDestroyed?.Invoke(this);
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (!IsExplosive)
+            {
+                return;
+            }
+
+            Instantiate(_explosionPrefab, transform.position, quaternion.identity);
         }
 
         private void OnDrawGizmos()
@@ -87,9 +107,22 @@ namespace Arkanoid.Game
             return _rb;
         }
 
+        public void MakeExplosive(Explosion explosionPrefab)
+        {
+            _explosionPrefab = explosionPrefab;
+            IsExplosive = true;
+        }
+
+        public void MakeNonExplosive()
+        {
+            _explosionPrefab = null;
+            IsExplosive = false;
+        }
+
         public void ResetBall()
         {
             _isStarted = false;
+            IsExplosive = false;
             _rb.velocity = Vector2.zero;
         }
 

@@ -1,5 +1,6 @@
 using System;
 using Arkanoid.Services;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Arkanoid.Game
@@ -12,10 +13,7 @@ namespace Arkanoid.Game
 
         [Header("Explosive")]
         [SerializeField] private bool _isExplosive;
-        [SerializeField] private float _explosiveRadius = 1f;
-        [SerializeField] private LayerMask _explosiveLayerMask;
-        [SerializeField] private GameObject _explosionVfxPrefab;
-        [SerializeField] private AudioClip _explosionAudioClip;
+        [SerializeField] private GameObject _explosionPrefab;
 
         #endregion
 
@@ -66,25 +64,9 @@ namespace Arkanoid.Game
 
         private void Explode()
         {
-            if (!_isExplosive)
+            if (_isExplosive)
             {
-                return;
-            }
-
-            AudioService.Instance.PlaySfx(_explosionAudioClip);
-
-            if (_explosionVfxPrefab != null)
-            {
-                Instantiate(_explosionVfxPrefab, transform.position, Quaternion.identity);
-            }
-
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _explosiveRadius, _explosiveLayerMask);
-            foreach (Collider2D col in colliders)
-            {
-                if (col.gameObject.TryGetComponent(out Block block))
-                {
-                    block.ForceDestroy();
-                }
+                Instantiate(_explosionPrefab, transform.position, quaternion.identity);
             }
         }
 
