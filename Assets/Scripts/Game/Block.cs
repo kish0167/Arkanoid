@@ -8,7 +8,14 @@ namespace Arkanoid.Game
     {
         #region Variables
 
-        [SerializeField] private int _score = 1;
+        [SerializeField] private int _score = 16;
+
+        [Header("Explosive")]
+        [SerializeField] private bool _isExplosive;
+        [SerializeField] private float _explosiveRadius = 1f;
+        [SerializeField] private LayerMask _explosiveLayerMask;
+        [SerializeField] private GameObject _explosionVfxPrefab;
+        [SerializeField] private AudioClip _explosionAudioClip;
 
         #endregion
 
@@ -38,6 +45,15 @@ namespace Arkanoid.Game
 
         #endregion
 
+        #region Public methods
+
+        public void ForceDestroy()
+        {
+            DestroyBlock();
+        }
+
+        #endregion
+
         #region Private methods
 
         private void DestroyBlock()
@@ -45,6 +61,31 @@ namespace Arkanoid.Game
             GameService.Instance.AddScore(_score);
             PickUpService.Instance.SpawnPickUp(transform.position);
             Destroy(gameObject);
+            Explode();
+        }
+
+        private void Explode()
+        {
+            if (!_isExplosive)
+            {
+                return;
+            }
+
+            AudioService.Instance.PlaySfx(_explosionAudioClip);
+
+            if (_explosionVfxPrefab != null)
+            {
+                Instantiate(_explosionVfxPrefab, transform.position, Quaternion.identity);
+            }
+
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _explosiveRadius, _explosiveLayerMask);
+            foreach (Collider2D col in colliders)
+            {
+                if (col.gameObject.TryGetComponent(out Block block))
+                {
+                    block.ForceDestroy();
+                }
+            }
         }
 
         #endregion
