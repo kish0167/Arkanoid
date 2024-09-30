@@ -15,6 +15,10 @@ namespace Arkanoid.Game
         [SerializeField] private float _speed = 10;
         [SerializeField] private float _yOffsetFromPlatform = 1;
         [SerializeField] private AudioClip _defaultHitSfx;
+        [SerializeField] private SpriteRenderer _ballSpriteRenderer;
+        [SerializeField] private Sprite _defaultSprite;
+        [SerializeField] private Sprite _explosiveSprite;
+        
 
         private ArkanoidExplosion _arkanoidExplosionPrefab;
 
@@ -116,7 +120,9 @@ namespace Arkanoid.Game
             {
                 return;
             }
-
+            
+            _rb.angularVelocity = 360f;
+            _ballSpriteRenderer.sprite = _explosiveSprite;
             _arkanoidExplosionPrefab = arkanoidExplosionPrefab;
             IsExplosive = true;
             StartCoroutine(MakeNonExplosive(duration));
@@ -137,6 +143,7 @@ namespace Arkanoid.Game
             yield return new WaitForSeconds(duration);
             _arkanoidExplosionPrefab = null;
             IsExplosive = false;
+            _ballSpriteRenderer.sprite = _defaultSprite;
         }
 
         private void MoveWithPlatform()

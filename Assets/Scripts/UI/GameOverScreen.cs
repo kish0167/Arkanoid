@@ -36,17 +36,10 @@ namespace Arkanoid.UI
 
         private void RestartButtonClickedCallback()
         {
-            GameService.Instance.IsGameOver = false;
-            GameService.Instance.ResetLives();
-            SceneLoaderService.Instance.LoadMenuScene();
+            GameService.Instance.GameRestart();
         }
 
         private void GameOverCallback()
-        {
-            _contentGameObject.SetActive(true);
-        }
-        
-        private void GameRestartCallback()
         {
             _contentGameObject.SetActive(true);
         }

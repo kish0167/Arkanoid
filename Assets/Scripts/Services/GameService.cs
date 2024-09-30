@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Arkanoid.Utility;
 using UnityEngine;
 
@@ -111,7 +112,7 @@ namespace Arkanoid.Services
         {
             if (SceneLoaderService.Instance.HasNextLevel()) // TODO: This is not fine
             {
-                SceneLoaderService.Instance.LoadNextLevel();
+                SceneLoaderService.Instance.LoadNextLevelDelayed();
             }
             else
             {
@@ -125,13 +126,25 @@ namespace Arkanoid.Services
             {
                 return;
             }
+            
+            GameOver();
+        }
 
+        private void GameOver()
+        {
             IsGameOver = true;
             Instance.ResetScore();
             AudioService.Instance.PlaySfx(_gameOverSfx);
             OnGameOver?.Invoke();
         }
 
+        public void GameRestart()
+        {
+            IsGameOver = false;
+            ResetLives();
+            SceneLoaderService.Instance.LoadMenuScene();
+        }
+        
         private void ResetScore()
         {
             _score = 0;

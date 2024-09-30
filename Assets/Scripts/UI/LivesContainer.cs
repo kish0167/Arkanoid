@@ -17,12 +17,13 @@ namespace Arkanoid.Services
         private void Awake()
         {
             Heart.OnCreated += HeartCreatedCallback;
-            GameService.Instance.OnLivesChanged += LivesChangedCallback;
+            
         }
 
         private void Start()
         {
             ShowNHearts(GameService.Instance.Lives);
+            GameService.Instance.OnLivesChanged += LivesChangedCallback;
         }
 
         private void OnDestroy()

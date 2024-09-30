@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sfxAudioSource: {fileID: 9001896664980112959}
+  _ostAudioSource: {fileID: 0}
 --- !u!82 &9001896664980112959
 AudioSource:
   m_ObjectHideFlags: 0
@@ -390,8 +391,10 @@ MonoBehaviour:
   - lvl2
   - lvl3
   - lvl4
+  - lvl5
   _startSceneName: StartScene
   _winSceneName: GameWinScene
+  _newLevelDelay: 1
 --- !u!1 &7708281713051520077
 GameObject:
   m_ObjectHideFlags: 0

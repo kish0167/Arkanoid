@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using Arkanoid.Utility;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +14,7 @@ namespace Arkanoid.Services
 
         [SerializeField] private string _startSceneName;
         [SerializeField] private string _winSceneName;
+        [SerializeField] private float _newLevelDelay = 1f;
         
 
         private int _currentSceneIndex;
@@ -49,12 +52,6 @@ namespace Arkanoid.Services
             return _levelSceneNames.Length > _currentSceneIndex + 1;
         }
 
-        public void LoadFirstLevel()
-        {
-            _currentSceneIndex = 0;
-            LoadCurrentScene();
-        }
-
         public void LoadLevelWithName(string levelName)
         {
             _currentSceneIndex = GetSceneIndex(levelName);
@@ -71,6 +68,11 @@ namespace Arkanoid.Services
         {
             _currentSceneIndex++;
             LoadCurrentScene();
+        }
+        
+        public void LoadNextLevelDelayed()
+        {
+            StartCoroutine(NewLevelDelayed());
         }
 
         #endregion
@@ -105,6 +107,12 @@ namespace Arkanoid.Services
             return -1;
         }
 
+        
+        private IEnumerator NewLevelDelayed()
+        {
+            yield return new WaitForSeconds(_newLevelDelay);
+            LoadNextLevel();
+        }
         private void LoadCurrentScene()
         {
             SceneManager.LoadScene(_levelSceneNames[_currentSceneIndex]);
