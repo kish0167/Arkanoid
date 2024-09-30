@@ -115,7 +115,7 @@ namespace Arkanoid.Services
             }
             else
             {
-                Debug.LogError("GAME WIN!");
+                SceneLoaderService.Instance.LoadWinScene();
             }
         }
 

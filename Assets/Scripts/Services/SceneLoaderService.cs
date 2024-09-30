@@ -11,6 +11,7 @@ namespace Arkanoid.Services
         [SerializeField] private string[] _levelSceneNames;
 
         [SerializeField] private string _startSceneName;
+        [SerializeField] private string _winSceneName;
         
 
         private int _currentSceneIndex;
@@ -35,6 +36,14 @@ namespace Arkanoid.Services
 
         #region Public methods
 
+        public void ExitGame()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+            Application.Quit();
+        }
+
         public bool HasNextLevel()
         {
             return _levelSceneNames.Length > _currentSceneIndex + 1;
@@ -46,29 +55,16 @@ namespace Arkanoid.Services
             LoadCurrentScene();
         }
 
-        public void LoadMenuScene()
-        {
-            SceneManager.LoadScene(_startSceneName);
-            Debug.LogError("??????");
-        }
-
-        private int GetSceneIndex(string levelName)
-        {
-            for (int i = 0; i < _levelSceneNames.Length; i++)
-            {
-                if (string.Equals(_levelSceneNames[i], levelName))
-                {
-                    return i;
-                }
-            }
-
-            return -1;
-        }
-
         public void LoadLevelWithName(string levelName)
         {
             _currentSceneIndex = GetSceneIndex(levelName);
             LoadCurrentScene();
+        }
+
+        public void LoadMenuScene()
+        {
+            SceneManager.LoadScene(_startSceneName);
+            Debug.LogError("??????");
         }
 
         public void LoadNextLevel()
@@ -96,11 +92,29 @@ namespace Arkanoid.Services
             }
         }
 
+        private int GetSceneIndex(string levelName)
+        {
+            for (int i = 0; i < _levelSceneNames.Length; i++)
+            {
+                if (string.Equals(_levelSceneNames[i], levelName))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
         private void LoadCurrentScene()
         {
             SceneManager.LoadScene(_levelSceneNames[_currentSceneIndex]);
         }
 
         #endregion
+
+        public void LoadWinScene()
+        {
+            SceneManager.LoadScene(_winSceneName);
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace Arkanoid.Game
         [SerializeField] private float _speed = 10;
         [SerializeField] private float _yOffsetFromPlatform = 1;
         [SerializeField] private AudioClip _defaultHitSfx;
-        
+
         private ArkanoidExplosion _arkanoidExplosionPrefab;
 
         private bool _isStarted;
@@ -112,16 +112,14 @@ namespace Arkanoid.Game
 
         public void MakeExplosive(ArkanoidExplosion arkanoidExplosionPrefab, float duration)
         {
+            if (IsExplosive)
+            {
+                return;
+            }
+
             _arkanoidExplosionPrefab = arkanoidExplosionPrefab;
             IsExplosive = true;
             StartCoroutine(MakeNonExplosive(duration));
-        }
-
-        private IEnumerator MakeNonExplosive(float duration)
-        {
-            yield return new WaitForSeconds(duration);
-            _arkanoidExplosionPrefab = null;
-            IsExplosive = false;
         }
 
         public void ResetBall()
@@ -133,6 +131,13 @@ namespace Arkanoid.Game
         #endregion
 
         #region Private methods
+
+        private IEnumerator MakeNonExplosive(float duration)
+        {
+            yield return new WaitForSeconds(duration);
+            _arkanoidExplosionPrefab = null;
+            IsExplosive = false;
+        }
 
         private void MoveWithPlatform()
         {

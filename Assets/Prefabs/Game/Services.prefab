@@ -391,6 +391,7 @@ MonoBehaviour:
   - lvl3
   - lvl4
   _startSceneName: StartScene
+  _winSceneName: GameWinScene
 --- !u!1 &7708281713051520077
 GameObject:
   m_ObjectHideFlags: 0

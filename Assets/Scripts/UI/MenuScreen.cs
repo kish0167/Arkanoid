@@ -10,6 +10,8 @@ namespace Arkanoid
 
         [SerializeField] private Button _levelButtonPrefab;
         [SerializeField] private HorizontalLayoutGroup _levelSelector;
+        [SerializeField] private Button _exitButton;
+        
 
         #endregion
 
@@ -17,6 +19,8 @@ namespace Arkanoid
 
         private void Start()
         {
+            _exitButton.onClick.AddListener(ExitButtonClickedCallback);
+            
             foreach (string levelSceneName in SceneLoaderService.Instance.LevelSceneNames)
             {
                 Button newButton = Instantiate(_levelButtonPrefab, _levelSelector.transform);
@@ -27,7 +31,12 @@ namespace Arkanoid
                 newButton.onClick.AddListener(newArcanoidButton.ButtonClickedCallback);
             }
         }
-
+        
+        public void ExitButtonClickedCallback()
+        {
+            SceneLoaderService.Instance.ExitGame();
+        }
+        
         #endregion
     }
 }
