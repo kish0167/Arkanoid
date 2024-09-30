@@ -9,12 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScene.unity
     guid: 4a06e545d4baa439fa1ac29c240cc822
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
+    path: Assets/Scenes/lvl1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
+    path: Assets/Scenes/lvl2.unity
     guid: f5ce3f6a0867744c0b031b53a04a78e8
   - enabled: 1
-    path: Assets/Scenes/Level_Shrrom_Stone_Blocks.unity
+    path: Assets/Scenes/lvl3.unity
     guid: 4b77e8e9a124b49e6805b4b45509874e
+  - enabled: 1
+    path: Assets/Scenes/lvl4.unity
+    guid: 93a1dc8e7240e9146ab16854c29b4779
   m_configObjects: {}

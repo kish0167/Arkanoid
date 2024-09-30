@@ -16,7 +16,7 @@ namespace Arkanoid.Game
         [SerializeField] private float _yOffsetFromPlatform = 1;
         [SerializeField] private AudioClip _defaultHitSfx;
         
-        private Explosion _explosionPrefab;
+        private ArkanoidExplosion _arkanoidExplosionPrefab;
 
         private bool _isStarted;
         private Platform _platform;
@@ -79,7 +79,7 @@ namespace Arkanoid.Game
                 return;
             }
 
-            Instantiate(_explosionPrefab, transform.position, quaternion.identity);
+            Instantiate(_arkanoidExplosionPrefab, transform.position, quaternion.identity);
         }
 
         private void OnDrawGizmos()
@@ -110,9 +110,9 @@ namespace Arkanoid.Game
             return _rb;
         }
 
-        public void MakeExplosive(Explosion explosionPrefab, float duration)
+        public void MakeExplosive(ArkanoidExplosion arkanoidExplosionPrefab, float duration)
         {
-            _explosionPrefab = explosionPrefab;
+            _arkanoidExplosionPrefab = arkanoidExplosionPrefab;
             IsExplosive = true;
             StartCoroutine(MakeNonExplosive(duration));
         }
@@ -120,7 +120,7 @@ namespace Arkanoid.Game
         private IEnumerator MakeNonExplosive(float duration)
         {
             yield return new WaitForSeconds(duration);
-            _explosionPrefab = null;
+            _arkanoidExplosionPrefab = null;
             IsExplosive = false;
         }
 

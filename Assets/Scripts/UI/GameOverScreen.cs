@@ -38,7 +38,7 @@ namespace Arkanoid.UI
         {
             GameService.Instance.IsGameOver = false;
             GameService.Instance.ResetLives();
-            SceneLoaderService.Instance.LoadFirstLevel();
+            SceneLoaderService.Instance.LoadMenuScene();
         }
 
         private void GameOverCallback()

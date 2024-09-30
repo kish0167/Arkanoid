@@ -386,9 +386,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelSceneNames:
-  - Level1
-  - Level2
-  - Level_Shrrom_Stone_Blocks
+  - lvl1
+  - lvl2
+  - lvl3
+  - lvl4
+  _startSceneName: StartScene
 --- !u!1 &7708281713051520077
 GameObject:
   m_ObjectHideFlags: 0

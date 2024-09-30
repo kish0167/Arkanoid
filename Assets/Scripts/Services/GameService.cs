@@ -127,8 +127,14 @@ namespace Arkanoid.Services
             }
 
             IsGameOver = true;
+            Instance.ResetScore();
             AudioService.Instance.PlaySfx(_gameOverSfx);
             OnGameOver?.Invoke();
+        }
+
+        private void ResetScore()
+        {
+            _score = 0;
         }
 
         #endregion

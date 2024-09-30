@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Arkanoid.Game
 {
-    public class Explosion : MonoBehaviour
+    public class ArkanoidExplosion : MonoBehaviour
     {
         [SerializeField] private float _explosiveRadius = 1f;
         [SerializeField] private LayerMask _explosiveLayerMask;
@@ -33,6 +33,8 @@ namespace Arkanoid.Game
                     block.ForceDestroy();
                 }
             }
+            
+            Destroy(this.gameObject);
         }
     }
 }
