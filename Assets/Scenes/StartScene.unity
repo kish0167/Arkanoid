@@ -527,6 +527,7 @@ MonoBehaviour:
   _levelButtonPrefab: {fileID: 7301278101794016678, guid: 0efd7df861ab3424ca932c3a53c3362f, type: 3}
   _levelSelector: {fileID: 229266947}
   _exitButton: {fileID: 470559491}
+  _menuTheme: {fileID: 8300000, guid: 747c7f52bdfc0fb4c8524fa2d1ae912a, type: 3}
 --- !u!1 &1780568155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,30 +1013,6 @@ PrefabInstance:
     - target: {fileID: 115061225510867029, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4900103234631212831, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
-      propertyPath: _levelSceneNames.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4900103234631212831, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
-      propertyPath: _levelSceneNames.Array.data[0]
-      value: lvl1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4900103234631212831, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
-      propertyPath: _levelSceneNames.Array.data[1]
-      value: lvl2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4900103234631212831, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
-      propertyPath: _levelSceneNames.Array.data[2]
-      value: lvl3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4900103234631212831, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
-      propertyPath: _levelSceneNames.Array.data[3]
-      value: lvl4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4900103234631212831, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
-      propertyPath: _levelSceneNames.Array.data[4]
-      value: lvl5
       objectReference: {fileID: 0}
     - target: {fileID: 7708281713051520077, guid: 995f524c53a0148248fd76eb24b1b72a, type: 3}
       propertyPath: m_Name

@@ -8,7 +8,6 @@ namespace Arkanoid.Services
         #region Variables
 
         [SerializeField] private AudioSource _sfxAudioSource;
-        [SerializeField] private AudioSource _ostAudioSource;
 
         #endregion
 
@@ -23,15 +22,10 @@ namespace Arkanoid.Services
 
             _sfxAudioSource.PlayOneShot(clip);
         }
-        
-        public void PlayOst(AudioClip clip)
-        {
-            if (clip == null)
-            {
-                return;
-            }
 
-            _ostAudioSource.PlayOneShot(clip);
+        public void StopAll()
+        {
+            _sfxAudioSource.Stop();
         }
 
         #endregion

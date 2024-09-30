@@ -875,6 +875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scoreLabel: {fileID: 5221227701840843583}
+  _levelTheme: {fileID: 8300000, guid: e6b7a8eb2ab5ad54985c22cf6a7ecd83, type: 3}
 --- !u!1 &4536345625602432506
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,10 +6,6 @@ namespace Arkanoid.Game
 {
     public class Platform : MonoBehaviour
     {
-        #region Variables
-
-        #endregion
-
         #region Events
 
         public static event Action<Platform> OnCreated;
@@ -30,11 +26,6 @@ namespace Arkanoid.Game
             OnCreated?.Invoke(this);
         }
 
-        private void OnDestroy()
-        {
-            OnDestroyed?.Invoke(this);
-        }
-
         private void Update()
         {
             if (PauseService.Instance.IsPaused || GameService.Instance.IsGameOver)
@@ -50,6 +41,11 @@ namespace Arkanoid.Game
             {
                 MoveWithMouse();
             }
+        }
+
+        private void OnDestroy()
+        {
+            OnDestroyed?.Invoke(this);
         }
 
         private void OnCollisionEnter2D(Collision2D other)

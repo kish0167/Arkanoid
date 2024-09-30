@@ -9,6 +9,7 @@ namespace Arkanoid.UI
         #region Variables
 
         [SerializeField] private TMP_Text _scoreLabel;
+        [SerializeField] private AudioClip _levelTheme;
 
         #endregion
 
@@ -18,7 +19,8 @@ namespace Arkanoid.UI
         {
             GameService.Instance.OnScoreChanged += ScoreChangedCallback;
             UpdateScore();
-            
+            AudioService.Instance.StopAll();
+            AudioService.Instance.PlaySfx(_levelTheme);
         }
 
         private void OnDestroy()

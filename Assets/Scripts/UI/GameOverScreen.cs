@@ -31,17 +31,17 @@ namespace Arkanoid.UI
         }
 
         #endregion
-  
-        #region Private methods
 
-        private void RestartButtonClickedCallback()
-        {
-            GameService.Instance.GameRestart();
-        }
+        #region Private methods
 
         private void GameOverCallback()
         {
             _contentGameObject.SetActive(true);
+        }
+
+        private void RestartButtonClickedCallback()
+        {
+            GameService.Instance.GameRestart();
         }
 
         #endregion

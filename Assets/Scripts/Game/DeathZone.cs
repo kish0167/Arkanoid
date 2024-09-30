@@ -23,7 +23,7 @@ namespace Arkanoid.Game
             if (other.gameObject.CompareTag(Tag.Ball) && LevelService.Instance.IsLastBall())
             {
                 GameService.Instance.ChangeLife(-1);
-                
+
                 if (GameService.Instance.IsGameOver)
                 {
                     Destroy(LevelService.Instance.GetFirstBall().gameObject);

@@ -17,7 +17,6 @@ namespace Arkanoid.Services
         private void Awake()
         {
             Heart.OnCreated += HeartCreatedCallback;
-            
         }
 
         private void Start()

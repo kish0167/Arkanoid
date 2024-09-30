@@ -8,11 +8,12 @@ namespace Arkanoid.Game.PickUps
     public abstract class PickUp : MonoBehaviour
     {
         #region Variables
-        
+
         [Header("Default pickup settings")]
         [SerializeField] private int _scoreValue;
         [SerializeField] private AudioClip _audioClip;
         [SerializeField] private GameObject _vfxPrefab;
+
         #endregion
 
         #region Unity lifecycle

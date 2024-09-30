@@ -18,7 +18,6 @@ namespace Arkanoid.Game
         [SerializeField] private SpriteRenderer _ballSpriteRenderer;
         [SerializeField] private Sprite _defaultSprite;
         [SerializeField] private Sprite _explosiveSprite;
-        
 
         private ArkanoidExplosion _arkanoidExplosionPrefab;
 
@@ -120,7 +119,7 @@ namespace Arkanoid.Game
             {
                 return;
             }
-            
+
             _rb.angularVelocity = 360f;
             _ballSpriteRenderer.sprite = _explosiveSprite;
             _arkanoidExplosionPrefab = arkanoidExplosionPrefab;
